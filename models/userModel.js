@@ -25,7 +25,7 @@ const userSchema = mongoose.Schema({
 	},
 	isUserVerified: {
 		type: Boolean,
-		default: false,
+		default: true,
 	},
 	role: {
 		type: String,
