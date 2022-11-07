@@ -1,41 +1,52 @@
 const mongoose = require("mongoose");
+
 const purchaseFormSchema = mongoose.Schema({
     customer: {
         type: String,
-        required: true,
+
     },
 
     pondWeight: {
         type: Number,
-        required: true,
+        default: 0,
+
     },
     mail: {
         type: Number,
-        required: true,
+        default: 0
+
     },
     finalWeight: {
         type: Number,
-        required: true,
+        default: 0
+
     },
     gramRate: {
         type: Number,
-        required: true,
+        default: 0,
+
+
+
     },
     pureWeight: {
         type: Number,
-        required: true,
+        default: 0
+
     },
     rate: {
         type: Number,
-        required: true,
+        default: 0
+
     },
 
     cash: {
         type: Number,
-        required: true,
+        default: 0
+
     },
     desc: {
         type: String,
+
     },
     reportID: {
         type: String,
@@ -43,7 +54,17 @@ const purchaseFormSchema = mongoose.Schema({
     },
     sellerName: {
         type: String,
-        require: true
+
+    },
+    ratti: {
+        type: Number,
+        default: 0
+
+    },
+    milli: {
+        type: Number,
+        default: 0
+
     }
 
 }, {
