@@ -70,7 +70,7 @@ exports.getTradeForm = async (req, res) => {
 };
 
 const inc = async () => {
-    const { seq } = await incModel.findOneAndUpdate({ _id: "63667b5196a98cc89adcff50" }, { $inc: { seq: 1 } }, { returnOriginal: false });
+    const { seq } = await incModel.findOneAndUpdate({ _id: "6368b1704ceb7b796fd89702" }, { $inc: { seq: 1 } }, { returnOriginal: false });
     return seq;
 };
 

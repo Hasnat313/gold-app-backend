@@ -70,7 +70,7 @@ exports.getPurchaseForm = async (req, res) => {
 };
 
 const inc = async () => {
-	const { seq } = await incModel.findOneAndUpdate({ _id: "63133c012f265ba68e0cd716" }, { $inc: { seq: 1 } }, { returnOriginal: false });
+	const { seq } = await incModel.findOneAndUpdate({ _id: "634a5bfe08f118d94aa0a43c" }, { $inc: { seq: 1 } }, { returnOriginal: false });
 	return seq;
 };
 

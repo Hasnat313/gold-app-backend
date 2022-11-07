@@ -13,8 +13,8 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-mongoose.connect("mongodb://127.0.0.1:27017/GoldShopApp");
-// mongoose.connect("mongodb+srv://hasnat100:123hasnat@cluster0.pslss.mongodb.net/GoldShopApp")
+// mongoose.connect("mongodb://127.0.0.1:27017/GoldShopApp");
+mongoose.connect("mongodb+srv://hasnat100:123hasnat@cluster0.pslss.mongodb.net/GoldShopApp")
 
 app.use("/api/purchaseForm", require("./routes/PurchaseFormRoutes"));
 app.use("/api/tradeForm", require("./routes/TradeFormRoutes"));
