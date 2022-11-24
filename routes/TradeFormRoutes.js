@@ -5,5 +5,5 @@ const { auth } = require("../middleware/auth")
 
 router.post("/post", controller.postTradeForm);
 router.get("/get", controller.getTradeForm);
-
+router.get("/get/cashAndWeight", controller.calTradeFormCashAndWeight);
 module.exports = router;

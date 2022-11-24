@@ -68,7 +68,62 @@ exports.getTradeForm = async (req, res) => {
         res.status(400).json(e);
     }
 };
+exports.calTradeFormCashAndWeight = async (req, res) => {
+    try {
 
+        const sellRawaWeight = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellRawa" } },
+            { $group: { _id: "$type", totalGold: { $sum: "$weight" } } }]
+        );
+        console.log(sellRawaWeight);
+        const sellRawaCash = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellRawa" } },
+            { $group: { _id: "$type", totalCash: { $sum: "$cash" } } }]
+        );
+        console.log(sellRawaCash);
+
+
+
+
+        const sellPCSWeight = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellPCS" } },
+            { $group: { _id: "$type", totalGold: { $sum: "$weight" } } }]
+        );
+        console.log(sellPCSWeight);
+        const sellPCSCash = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellPCS" } },
+            { $group: { _id: "$type", totalCash: { $sum: "$cash" } } }]
+        );
+        console.log(sellPCSCash);
+
+
+
+
+        const sellGramiWeight = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellGrami" } },
+            { $group: { _id: "$type", totalGold: { $sum: "$weight" } } }]
+        );
+        console.log(sellGramiWeight);
+        const sellGramiCash = await tradeFormModel.aggregate(
+            [{ $match: { type: "sellGrami" } },
+            { $group: { _id: "$type", totalCash: { $sum: "$cash" } } }]
+        );
+        console.log(sellGramiCash);
+
+        res.json({
+            "sellRawaGold": sellRawaWeight[0].totalGold,
+            "sellRawaCash": sellRawaCash[0].totalCash,
+            "sellPCSGold": sellPCSWeight[0].totalGold,
+            "sellPCSCash": sellPCSCash[0].totalCash,
+            "sellGramiGold": sellGramiWeight[0].totalGold,
+            "sellGramiCash": sellGramiCash[0].totalCash,
+        })
+
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
 const inc = async () => {
     const { seq } = await incModel.findOneAndUpdate({ _id: "6368b1704ceb7b796fd89702" }, { $inc: { seq: 1 } }, { returnOriginal: false });
     return seq;

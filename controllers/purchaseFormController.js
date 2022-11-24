@@ -28,6 +28,34 @@ exports.postPurchaseForm = async (req, res) => {
 	}
 };
 
+
+exports.getTotalPurchaseFormCash = async (req, res) => {
+
+	try {
+
+		const data = await purchaseFormModel.aggregate(
+			[{ $match: { paymentMethod: "Pure" } },
+			{ $group: { _id: "$paymentMethod", total: { $sum: "$pureWeight" } } }]
+		);
+		console.log(data);
+		const data2 = await purchaseFormModel.aggregate(
+			[{ $match: { paymentMethod: "Cash" } },
+			{ $group: { _id: "$paymentMethod", total: { $sum: "$cash" } } }]
+		);
+		console.log(data2);
+		res.json({
+			"Pure": data[0].total,
+			"Cash": data2[0].total
+
+		})
+	}
+	catch (e) {
+		console.log(e);
+	}
+
+
+}
+
 exports.getPurchaseForm = async (req, res) => {
 	try {
 		const pageSize = 12;
