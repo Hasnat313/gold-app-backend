@@ -3,7 +3,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const app = express();
 const { noInternet } = require("./middleware/noInternet")
-const axios = require("axios");
+
 const cors = require("cors");
 const corsOptions = {
 	origin: process.env.BASE_URL_FRONTEND,
