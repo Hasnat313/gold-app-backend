@@ -111,12 +111,12 @@ exports.calTradeFormCashAndWeight = async (req, res) => {
         console.log(sellGramiCash);
 
         res.json({
-            "sellRawaGold": sellRawaWeight[0].totalGold,
-            "sellRawaCash": sellRawaCash[0].totalCash,
-            "sellPCSGold": sellPCSWeight[0].totalGold,
-            "sellPCSCash": sellPCSCash[0].totalCash,
-            "sellGramiGold": sellGramiWeight[0].totalGold,
-            "sellGramiCash": sellGramiCash[0].totalCash,
+            "sellRawaGold": sellRawaWeight[0]?.totalGold || 0,
+            "sellRawaCash": sellRawaCash[0]?.totalCash || 0,
+            "sellPCSGold": sellPCSWeight[0]?.totalGold || 0,
+            "sellPCSCash": sellPCSCash[0]?.totalCash || 0,
+            "sellGramiGold": sellGramiWeight[0]?.totalGold || 0,
+            "sellGramiCash": sellGramiCash[0]?.totalCash || 0,
         })
 
     }

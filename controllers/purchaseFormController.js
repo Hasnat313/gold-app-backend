@@ -43,9 +43,12 @@ exports.getTotalPurchaseFormCash = async (req, res) => {
 			{ $group: { _id: "$paymentMethod", total: { $sum: "$cash" } } }]
 		);
 		console.log(data2);
+
+		console.log(data2);
+		console.log(data);
 		res.json({
-			"Pure": data[0].total,
-			"Cash": data2[0].total
+			"Pure": data[0]?.total || 0,
+			"Cash": data2[0]?.total || 0
 
 		})
 	}
